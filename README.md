@@ -1,6 +1,6 @@
 # BallerBot
 
-Gonna show you a good time.
+Telegram bot to get your sports fix.
 
 ## Init
 Remember to initialize your bot:
