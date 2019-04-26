@@ -1,7 +1,7 @@
 {
   "name": "ballerbot",
   "version": "1.0.0",
-  "description": "Telegram bot to get your sports fix ",
+  "description": "Telegram bot to get your sports fix",
   "main": "index.js",
   "scripts": {
    "start": "node index.js"
