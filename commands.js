@@ -19,6 +19,21 @@ module.exports = [
     }
 ];
 
+async function hiMethod(chat_id,res){
+    sendMessage('How you doin?',chat_id,res);
+}
+
+async function nbaTopScorer(chat_id,res){
+    
+    sendMessage('Still learning this one...',chat_id,res)
+}
+
+async function unknownCommand(chat_id,res){
+    sendMessage("I don't know what you mean",chat_id,res);
+}
+
+
+//Lower level functions
 async function sendMessage(textToSend,chatid,res) {
     axios.post(telegram_url+"/sendMessage",{
       chat_id : chatid,
@@ -32,16 +47,4 @@ async function sendMessage(textToSend,chatid,res) {
       console.log('Error :', err)
       res.end('Error :' + err)
     })
-}
-
-async function hiMethod(chat_id,res){
-    sendMessage('How you doin?',chat_id,res);
-}
-
-async function nbaTopScorer(chat_id,res){
-    sendMessage('Still learning this one...',chat_id,res)
-}
-
-async function unknownCommand(chat_id,res){
-    sendMessage("I don't know what you mean",chat_id,res);
 }

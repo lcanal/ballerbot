@@ -24,7 +24,6 @@ app.post('*',async function (req,res){
   
   //No Matches
   const [ unknown ] = commands.slice(-1)
-  console.log(unknown);
   await unknown.method(chat.id,res);
 });
 
