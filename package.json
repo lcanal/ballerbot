@@ -4,7 +4,9 @@
   "description": "Telegram bot to get your sports fix.",
   "main": "index.js",
   "scripts": {
-   "start": "node index.js"
+   "start": "node index.js",
+   "dev": "now dev -d",
+   "deploy": "now -e TEL_API_TOKEN=@ballerbot_token"
   },
   "author": "Luis Canales",
   "license": "ISC",
