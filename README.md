@@ -3,7 +3,7 @@
 Telegram bot to get your sports fix.
 
 ## Init
-Remember to initialize your bot:
+Remember to initialize your bot using the [setWebHook](https://core.telegram.org/bots/api#setwebhook):
 
 ```
 curl -F "url=https://alias.now.sh"  https://api.telegram.org/bot<your_api_token>/setWebhook
