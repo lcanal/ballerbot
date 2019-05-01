@@ -12,8 +12,8 @@ module.exports = [
         method  : hiMethod
     },
     {
-        name    : 'topscorer',
-        method  : topScorer
+        name    : 'hustlers',
+        method  : hustlers
     },
     {
         name    : 'scoreboard',
@@ -29,8 +29,13 @@ async function hiMethod(text,chat_id,res){
     sendMessage('How you doin?',chat_id,res);
 }
 
-async function topScorer(text,chat_id,res){
-    
+async function hustlers(text,chat_id,res){
+    const hustlersParams =  {
+        SeasonType: "Playoffs"
+    }
+    const leaders = await NBA.stats.teamHustleLeaders(hustlersParams);
+    //console.log(leaders)
+    console.log(JSON.stringify(leaders));
     sendMessage('Still learning this one...',chat_id,res);
 }
 
@@ -42,11 +47,8 @@ async function scoreBoardGet(date,chat_id,res) {
         gameDate: date
     };
 
-    console.log("Sending parms:");
-    console.table(scoreParms);
-    console.log(scoreParms);
     const score = await NBA.stats.scoreboard(scoreParms);
-    console.log(JSON.stringify(score));
+    console.log(JSON.stringify(score));    
     res.end('ok');
     sendMessage("Working on it... ",chat_id,res);
     //sendMessage(score,chat_id,res);
