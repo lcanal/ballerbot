@@ -2,7 +2,8 @@
 
 const axios = require("axios");
 const NBA = require("nba");
-//const JSON = require("JSON");
+const {table} = require("table");
+
 let telegram_url  = "https://api.telegram.org/bot" + process.env.TEL_API_TOKEN;
 require("dotenv").config();
 
@@ -33,10 +34,33 @@ async function hustlers(text,chat_id,res){
     const hustlersParams =  {
         SeasonType: "Playoffs"
     }
-    const leaders = await NBA.stats.teamHustleLeaders(hustlersParams);
-    //console.log(leaders)
-    console.log(JSON.stringify(leaders));
-    sendMessage('Still learning this one...',chat_id,res);
+    console.log("Attempting send...");
+    const response = await NBA.stats.playerHustleLeaders(hustlersParams);
+    const { resultSets } = response;
+
+    resultSets.forEach(result => {
+        let dataTable = [];
+        let msg = response.parameters.Season + " " + response.parameters.SeasonType +
+            " - " + result.name + "\n";
+    
+        //Drop player_id and team_id from response. This could very well break 
+        //should any shifts occur
+        result.headers.splice(0,1);
+        result.headers.splice(1,1);
+
+        dataTable.push(result.headers);
+        result.rowSet.forEach((row,index) => {
+            //Drop player_id and team_id from row. This could very well break 
+            //should any shifts occur
+            row.splice(0,1);
+            row.splice(1,1);
+            dataTable.push(row)
+        });
+
+        msg += table(dataTable);
+        sendMessage(msg,chat_id,res)
+    });
+    res.end('ok')
 }
 
 async function scoreBoardGet(date,chat_id,res) {
