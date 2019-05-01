@@ -3,7 +3,9 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const commands = require("./commands")
 let app = express();
+process.env.TZ = 'America/Los_Angeles';
 app.use(bodyParser.json());
+
 
 // Bot response routines
 app.post('*',async function (req,res){
@@ -17,7 +19,11 @@ app.post('*',async function (req,res){
   const { text, chat } = message;
   for (const command of commands) {
     if (text.toLowerCase().indexOf(command.name) >= 0) {
-      await command.method(chat.id,res);
+      let cArray = text.split(' ')
+      cArray.shift();                 //Remove command from arguments to send function
+      let args = cArray.join(' ');
+
+      await command.method(args,chat.id,res);
       return 
     }
   }

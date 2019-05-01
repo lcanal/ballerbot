@@ -1,6 +1,8 @@
 "use strict";
 
 const axios = require("axios");
+const NBA = require("nba");
+//const JSON = require("JSON");
 let telegram_url  = "https://api.telegram.org/bot" + process.env.TEL_API_TOKEN;
 require("dotenv").config();
 
@@ -10,8 +12,12 @@ module.exports = [
         method  : hiMethod
     },
     {
-        name    : 'nbatopscorer',
-        method  : nbaTopScorer
+        name    : 'topscorer',
+        method  : topScorer
+    },
+    {
+        name    : 'scoreboard',
+        method  : scoreBoardGet
     },
     {
         name    : 'unknown',
@@ -19,19 +25,36 @@ module.exports = [
     }
 ];
 
-async function hiMethod(chat_id,res){
+async function hiMethod(text,chat_id,res){
     sendMessage('How you doin?',chat_id,res);
 }
 
-async function nbaTopScorer(chat_id,res){
+async function topScorer(text,chat_id,res){
     
-    sendMessage('Still learning this one...',chat_id,res)
+    sendMessage('Still learning this one...',chat_id,res);
 }
 
-async function unknownCommand(chat_id,res){
+async function scoreBoardGet(date,chat_id,res) {
+    if (typeof(date) === 'undefined' || date.length <= 0 )
+        date = await getFormattedDate(new Date());
+    
+    let scoreParms = {
+        gameDate: date
+    };
+
+    console.log("Sending parms:");
+    console.table(scoreParms);
+    console.log(scoreParms);
+    const score = await NBA.stats.scoreboard(scoreParms);
+    console.log(JSON.stringify(score));
+    res.end('ok');
+    sendMessage("Working on it... ",chat_id,res);
+    //sendMessage(score,chat_id,res);
+}
+
+async function unknownCommand(text,chat_id,res){
     sendMessage("I don't know what you mean",chat_id,res);
 }
-
 
 //Lower level functions
 async function sendMessage(textToSend,chatid,res) {
@@ -47,4 +70,11 @@ async function sendMessage(textToSend,chatid,res) {
       console.log('Error :', err)
       res.end('Error :' + err)
     })
+}
+
+async function getFormattedDate(date) {
+    let year = date.getFullYear();
+    let month = (1 + date.getMonth()).toString().padStart(2, '0');
+    let day = date.getDate().toString().padStart(2, '0');
+    return month + '/' + day + '/' + year;
 }
