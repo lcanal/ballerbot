@@ -3,9 +3,9 @@
 const axios = require("axios");
 const NBA = require("nba");
 const {table} = require("table");
+require("dotenv").config();
 
 let telegram_url  = "https://api.telegram.org/bot" + process.env.TEL_API_TOKEN;
-require("dotenv").config();
 
 module.exports = [
     {
