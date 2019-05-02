@@ -6,7 +6,6 @@ let app = express();
 process.env.TZ = 'America/Los_Angeles';
 app.use(bodyParser.json());
 
-
 // Bot response routines
 app.post('*',async function (req,res){
   const { message } = req.body
@@ -37,4 +36,6 @@ app.get('*', (req, res) => {
     res.status(200).send("<h1>BallerBot says hi</h1>")
 });
 
-module.exports = app;
+app.listen(3000, () => {
+  console.log('ballerbot running on port 3000');
+});

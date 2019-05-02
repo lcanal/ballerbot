@@ -35,7 +35,13 @@ async function hustlers(text,chat_id,res){
         SeasonType: "Playoffs"
     }
     console.log("Attempting send...");
-    const response = await NBA.stats.playerHustleLeaders(hustlersParams);
+    try {
+        const response = await NBA.stats.playerHustleLeaders(hustlersParams);
+    }catch (e){
+        console.log("Error " + e);
+        res.end('error')
+    }
+    
     const { resultSets } = response;
 
     resultSets.forEach(result => {
@@ -64,16 +70,16 @@ async function hustlers(text,chat_id,res){
 }
 
 async function scoreBoardGet(date,chat_id,res) {
-    if (typeof(date) === 'undefined' || date.length <= 0 )
-        date = await getFormattedDate(new Date());
+    // if (typeof(date) === 'undefined' || date.length <= 0 )
+    //     date = await getFormattedDate(new Date());
     
-    let scoreParms = {
-        gameDate: date
-    };
+    // let scoreParms = {
+    //     gameDate: date
+    // };
 
-    const score = await NBA.stats.scoreboard(scoreParms);
-    console.log(JSON.stringify(score));    
-    res.end('ok');
+    // const score = await NBA.stats.scoreboard(scoreParms);
+    // console.log(JSON.stringify(score));    
+    // res.end('ok');
     sendMessage("Working on it... ",chat_id,res);
     //sendMessage(score,chat_id,res);
 }
