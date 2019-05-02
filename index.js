@@ -29,7 +29,7 @@ app.post('*',async function (req,res){
   
   //No Matches
   const [ unknown ] = commands.slice(-1)
-  await unknown.method(chat.id,res);
+  await unknown.method("I don't know what you mean.",chat.id,res);
 });
 
 app.get('*', (req, res) => {

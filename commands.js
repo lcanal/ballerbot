@@ -85,11 +85,13 @@ async function scoreBoardGet(date,chat_id,res) {
 }
 
 async function unknownCommand(text,chat_id,res){
-    sendMessage("I don't know what you mean",chat_id,res);
+    sendMessage(text,chat_id,res);
 }
 
 //Lower level functions
 async function sendMessage(textToSend,chatid,res) {
+    console.log("Sending msg: " + textToSend);
+    console.log("To ChatID: " + chatid);
     axios.post(telegram_url+"/sendMessage",{
       chat_id : chatid,
       text    : textToSend
