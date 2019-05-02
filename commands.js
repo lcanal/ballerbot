@@ -50,12 +50,14 @@ async function hustlas(text,chat_id,res){
         //     " - " + result.name + "\n";
         let msg = "";
     
-        //Drop player_id and team_id from response. This could very well break 
+        //Drop player_id and team_id from response. This could very well break
         //should any shifts occur
-        result.headers.splice(0,1);
-        result.headers.splice(1,1);
-        result.headers[0] = "PLAYER"
-        result.headers[1] = "TEAM"
+        result.headers.splice(0,1);     //remove player_id
+        result.headers.splice(1,1);    // Remove team id
+        result.headers.splice(2,1);    //Remove age
+        result.headers[0] = "PLAYER";
+        result.headers[1] = "TEAM";
+        result.headers[3] = result.headers[3].replace(/_/g,' ');
 
         dataTable.push(result.headers);
         result.rowSet.forEach((row,index) => {
@@ -66,7 +68,7 @@ async function hustlas(text,chat_id,res){
             dataTable.push(row)
         });
 
-        msg += "``` " + asTable.configure({ delimiter: ' | ', right: false}) (dataTable) + " ```";
+        msg += "```\n" + asTable.configure({ delimiter: ' | ', right: false}) (dataTable) + "\n```";
         sendMessage(msg,chat_id,res)
     });
     res.end('ok')
