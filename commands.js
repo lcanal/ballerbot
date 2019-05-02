@@ -2,9 +2,10 @@
 
 const axios = require("axios");
 const NBA = require("nba");
-const {table} = require("table");
+const asTable = require ('as-table');
 require("dotenv").config();
 
+asTable.configure({ maxTotalWidth: 32, right: true});
 let telegram_url  = "https://api.telegram.org/bot" + process.env.TEL_API_TOKEN;
 
 module.exports = [
@@ -13,8 +14,8 @@ module.exports = [
         method  : hiMethod
     },
     {
-        name    : 'hustlers',
-        method  : hustlers
+        name    : 'hustlas',
+        method  : hustlas
     },
     {
         name    : 'scoreboard',
@@ -30,29 +31,31 @@ async function hiMethod(text,chat_id,res){
     sendMessage('How you doin?',chat_id,res);
 }
 
-async function hustlers(text,chat_id,res){
+async function hustlas(text,chat_id,res){
     const hustlersParams =  {
         SeasonType: "Playoffs"
     }
     console.log("Attempting send...");
-    try {
-        const response = await NBA.stats.playerHustleLeaders(hustlersParams);
-    }catch (e){
+    const response = await NBA.stats.playerHustleLeaders(hustlersParams).catch( e => {
         console.log("Error " + e);
         sendMessage("I couldn't query NBA api site. Sorry",chat_id,res);
-    }
+        return
+    });
     
     const { resultSets } = response;
 
     resultSets.forEach(result => {
         let dataTable = [];
-        let msg = response.parameters.Season + " " + response.parameters.SeasonType +
-            " - " + result.name + "\n";
+        // let msg = response.parameters.Season + " " + response.parameters.SeasonType +
+        //     " - " + result.name + "\n";
+        let msg = "";
     
         //Drop player_id and team_id from response. This could very well break 
         //should any shifts occur
         result.headers.splice(0,1);
         result.headers.splice(1,1);
+        result.headers[0] = "PLAYER"
+        result.headers[1] = "TEAM"
 
         dataTable.push(result.headers);
         result.rowSet.forEach((row,index) => {
@@ -63,7 +66,7 @@ async function hustlers(text,chat_id,res){
             dataTable.push(row)
         });
 
-        msg += table(dataTable);
+        msg += "``` " + asTable.configure({ delimiter: ' | ', right: false}) (dataTable) + " ```";
         sendMessage(msg,chat_id,res)
     });
     res.end('ok')
@@ -90,9 +93,9 @@ async function unknownCommand(text,chat_id,res){
 
 //Lower level functions
 async function sendMessage(textToSend,chatid,res) {
-    console.log("Sending msg: " + textToSend);
+    console.log("Sending msg: \n" + textToSend);
     console.log("To ChatID: " + chatid);
-    axios.post(telegram_url+"/sendMessage",{
+    axios.post(telegram_url+"/sendMessage?parse_mode=markdown",{
       chat_id : chatid,
       text    : textToSend
     })
