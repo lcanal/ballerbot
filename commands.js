@@ -39,7 +39,7 @@ async function hustlers(text,chat_id,res){
         const response = await NBA.stats.playerHustleLeaders(hustlersParams);
     }catch (e){
         console.log("Error " + e);
-        res.end('error')
+        sendMessage("I couldn't query NBA api site. Sorry",chat_id,res);
     }
     
     const { resultSets } = response;
