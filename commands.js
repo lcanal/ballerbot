@@ -65,6 +65,7 @@ async function hustlas(text,chat_id,res){
             //should any shifts occur
             row.splice(0,1);
             row.splice(1,1);
+            row.splice(2,1);
             dataTable.push(row)
         });
 
