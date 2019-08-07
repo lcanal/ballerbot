@@ -1,25 +1,14 @@
 "use strict";
 
 const axios = require("axios");
-const NBA = require("nba");
-const asTable = require ('as-table');
 require("dotenv").config();
 
-asTable.configure({ maxTotalWidth: 32, right: true});
 let telegram_url  = "https://api.telegram.org/bot" + process.env.TEL_API_TOKEN;
 
 module.exports = [
     {
         name    : 'hi',
         method  : hiMethod
-    },
-    {
-        name    : 'hustlas',
-        method  : hustlas
-    },
-    {
-        name    : 'scoreboard',
-        method  : scoreBoardGet
     },
     {
         name    : 'unknown',
@@ -29,65 +18,6 @@ module.exports = [
 
 async function hiMethod(text,chat_id,res){
     sendMessage('How you doin?',chat_id,res);
-}
-
-async function hustlas(text,chat_id,res){
-    const hustlersParams =  {
-        SeasonType: "Playoffs"
-    }
-    console.log("Attempting send...");
-    const response = await NBA.stats.playerHustleLeaders(hustlersParams).catch( e => {
-        console.log("Error " + e);
-        sendMessage("I couldn't query NBA api site. Sorry",chat_id,res);
-        return
-    });
-    
-    const { resultSets } = response;
-
-    resultSets.forEach(result => {
-        let dataTable = [];
-        // let msg = response.parameters.Season + " " + response.parameters.SeasonType +
-        //     " - " + result.name + "\n";
-        let msg = "";
-    
-        //Drop player_id and team_id from response. This could very well break
-        //should any shifts occur
-        result.headers.splice(0,1);     //remove player_id
-        result.headers.splice(1,1);    // Remove team id
-        result.headers.splice(2,1);    //Remove age
-        result.headers[0] = "PLAYER";
-        result.headers[1] = "TEAM";
-        result.headers[3] = result.headers[3].replace(/_/g,' ');
-
-        dataTable.push(result.headers);
-        result.rowSet.forEach((row,index) => {
-            //Drop player_id and team_id from row. This could very well break 
-            //should any shifts occur
-            row.splice(0,1);
-            row.splice(1,1);
-            row.splice(2,1);
-            dataTable.push(row)
-        });
-
-        msg += "```\n" + asTable.configure({ delimiter: ' | ', right: false}) (dataTable) + "\n```";
-        sendMessage(msg,chat_id,res)
-    });
-    res.end('ok')
-}
-
-async function scoreBoardGet(date,chat_id,res) {
-    // if (typeof(date) === 'undefined' || date.length <= 0 )
-    //     date = await getFormattedDate(new Date());
-    
-    // let scoreParms = {
-    //     gameDate: date
-    // };
-
-    // const score = await NBA.stats.scoreboard(scoreParms);
-    // console.log(JSON.stringify(score));    
-    // res.end('ok');
-    sendMessage("Working on it... ",chat_id,res);
-    //sendMessage(score,chat_id,res);
 }
 
 async function unknownCommand(text,chat_id,res){
