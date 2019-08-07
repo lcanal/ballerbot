@@ -1,0 +1,314 @@
+{
+    "resource": "leaguehustlestatsteamleaders", 
+    "resultSets": [
+        {
+            "headers": [
+                "TEAM_ID", 
+                "TEAM_NAME", 
+                "TEAM_ABBREVIATION", 
+                "RANK", 
+                "CONTESTED_SHOTS"
+            ], 
+            "rowSet": [
+                [
+                    1610612749, 
+                    "Milwaukee Bucks", 
+                    "MIL", 
+                    1, 
+                    73.83
+                ], 
+                [
+                    1610612760, 
+                    "Oklahoma City Thunder", 
+                    "OKC", 
+                    2, 
+                    72
+                ], 
+                [
+                    1610612759, 
+                    "San Antonio Spurs", 
+                    "SAS", 
+                    3, 
+                    67
+                ], 
+                [
+                    1610612744, 
+                    "Golden State Warriors", 
+                    "GSW", 
+                    4, 
+                    64.5
+                ], 
+                [
+                    1610612751, 
+                    "Brooklyn Nets", 
+                    "BKN", 
+                    5, 
+                    64.4
+                ]
+            ], 
+            "name": "TeamContestedShotsLeaders"
+        }, 
+        {
+            "headers": [
+                "TEAM_ID", 
+                "TEAM_NAME", 
+                "TEAM_ABBREVIATION", 
+                "RANK", 
+                "CHARGES_DRAWN"
+            ], 
+            "rowSet": [
+                [
+                    1610612761, 
+                    "Toronto Raptors", 
+                    "TOR", 
+                    1, 
+                    1.71
+                ], 
+                [
+                    1610612760, 
+                    "Oklahoma City Thunder", 
+                    "OKC", 
+                    2, 
+                    1.6
+                ], 
+                [
+                    1610612765, 
+                    "Detroit Pistons", 
+                    "DET", 
+                    3, 
+                    1.5
+                ], 
+                [
+                    1610612757, 
+                    "Portland Trail Blazers", 
+                    "POR", 
+                    4, 
+                    1.33
+                ], 
+                [
+                    1610612744, 
+                    "Golden State Warriors", 
+                    "GSW", 
+                    5, 
+                    1.13
+                ]
+            ], 
+            "name": "TeamChargesDrawnLeaders"
+        }, 
+        {
+            "headers": [
+                "TEAM_ID", 
+                "TEAM_NAME", 
+                "TEAM_ABBREVIATION", 
+                "RANK", 
+                "DEFLECTIONS"
+            ], 
+            "rowSet": [
+                [
+                    1610612761, 
+                    "Toronto Raptors", 
+                    "TOR", 
+                    1, 
+                    15
+                ], 
+                [
+                    1610612744, 
+                    "Golden State Warriors", 
+                    "GSW", 
+                    2, 
+                    13.63
+                ], 
+                [
+                    1610612765, 
+                    "Detroit Pistons", 
+                    "DET", 
+                    3, 
+                    13.25
+                ], 
+                [
+                    1610612753, 
+                    "Orlando Magic", 
+                    "ORL", 
+                    4, 
+                    13
+                ], 
+                [
+                    1610612745, 
+                    "Houston Rockets", 
+                    "HOU", 
+                    5, 
+                    12.29
+                ]
+            ], 
+            "name": "TeamDeflectionsLeaders"
+        }, 
+        {
+            "headers": [
+                "TEAM_ID", 
+                "TEAM_NAME", 
+                "TEAM_ABBREVIATION", 
+                "RANK", 
+                "LOOSE_BALLS_RECOVERED"
+            ], 
+            "rowSet": [
+                [
+                    1610612749, 
+                    "Milwaukee Bucks", 
+                    "MIL", 
+                    1, 
+                    10.17
+                ], 
+                [
+                    1610612760, 
+                    "Oklahoma City Thunder", 
+                    "OKC", 
+                    2, 
+                    9.6
+                ], 
+                [
+                    1610612761, 
+                    "Toronto Raptors", 
+                    "TOR", 
+                    3, 
+                    8.86
+                ], 
+                [
+                    1610612745, 
+                    "Houston Rockets", 
+                    "HOU", 
+                    4, 
+                    8.43
+                ], 
+                [
+                    1610612751, 
+                    "Brooklyn Nets", 
+                    "BKN", 
+                    5, 
+                    8.2
+                ]
+            ], 
+            "name": "TeamLooseBallLeaders"
+        }, 
+        {
+            "headers": [
+                "TEAM_ID", 
+                "TEAM_NAME", 
+                "TEAM_ABBREVIATION", 
+                "RANK", 
+                "SCREEN_ASSISTS"
+            ], 
+            "rowSet": [
+                [
+                    1610612751, 
+                    "Brooklyn Nets", 
+                    "BKN", 
+                    1, 
+                    13.4
+                ], 
+                [
+                    1610612743, 
+                    "Denver Nuggets", 
+                    "DEN", 
+                    2, 
+                    11.13
+                ], 
+                [
+                    1610612765, 
+                    "Detroit Pistons", 
+                    "DET", 
+                    3, 
+                    11
+                ], 
+                [
+                    1610612755, 
+                    "Philadelphia 76ers", 
+                    "PHI", 
+                    4, 
+                    9.86
+                ], 
+                [
+                    1610612757, 
+                    "Portland Trail Blazers", 
+                    "POR", 
+                    5, 
+                    9.83
+                ]
+            ], 
+            "name": "TeamScreenAssistLeaders"
+        }, 
+        {
+            "headers": [
+                "TEAM_ID", 
+                "TEAM_NAME", 
+                "TEAM_ABBREVIATION", 
+                "RANK", 
+                "BOX_OUTS"
+            ], 
+            "rowSet": [
+                [
+                    1610612757, 
+                    "Portland Trail Blazers", 
+                    "POR", 
+                    1, 
+                    32.17
+                ], 
+                [
+                    1610612751, 
+                    "Brooklyn Nets", 
+                    "BKN", 
+                    2, 
+                    32
+                ], 
+                [
+                    1610612738, 
+                    "Boston Celtics", 
+                    "BOS", 
+                    3, 
+                    29.5
+                ], 
+                [
+                    1610612745, 
+                    "Houston Rockets", 
+                    "HOU", 
+                    4, 
+                    29.43
+                ], 
+                [
+                    1610612761, 
+                    "Toronto Raptors", 
+                    "TOR", 
+                    5, 
+                    28.86
+                ]
+            ], 
+            "name": "Table5"
+        }
+    ], 
+    "parameters": {
+        "Conference": null, 
+        "TeamID": null, 
+        "Location": null, 
+        "Height": null, 
+        "SeasonType": "Playoffs", 
+        "Division": null, 
+        "Season": "2018-19", 
+        "DraftYear": null, 
+        "DateFrom": null, 
+        "PlayerPosition": null, 
+        "Country": null, 
+        "VsConference": null, 
+        "OpponentTeamID": null, 
+        "DateTo": null, 
+        "DraftPick": null, 
+        "VsDivision": null, 
+        "LeagueID": "00", 
+        "Outcome": null, 
+        "PlayerExperience": null, 
+        "Weight": null, 
+        "PORound": null, 
+        "PerMode": "PerGame", 
+        "SeasonSegment": null, 
+        "Month": null, 
+        "College": null
+    }
+}

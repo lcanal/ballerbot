@@ -4,16 +4,16 @@
   "description": "Telegram bot to get your sports fix.",
   "main": "index.js",
   "scripts": {
-   "start": "node index.js",
-   "dev": "now dev -d",
-   "deploy": "now -e TEL_API_TOKEN=@ballerbot_token"
+    "start": "node index.js"
   },
   "author": "Luis Canales",
   "license": "ISC",
   "dependencies": {
-    "axios": "^0.18.0",
+    "as-table": "^1.0.52",
+    "axios": "^0.18.1",
     "body-parser": "^1.19.0",
     "dotenv": "^7.0.0",
-    "express": "^4.16.4"
-  }
+    "express": "^4.17.1"
+  },
+  "devDependencies": {}
 }
