@@ -11,9 +11,9 @@
   "dependencies": {
     "as-table": "^1.0.52",
     "axios": "^0.21.2",
-    "body-parser": "^1.19.0",
+    "body-parser": "^1.20.1",
     "dotenv": "^7.0.0",
-    "express": "^4.17.1"
+    "express": "^4.18.2"
   },
   "devDependencies": {}
 }
